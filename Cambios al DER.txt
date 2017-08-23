@@ -1,0 +1,22 @@
+Cambios en el DER:
+     
+
+Federico
+
+-Agrego campo "habilitado" al rol: las bajas son logicas y usamos este campo para habilitar un rol o no
+-A la entidad USUARIO no le corresponde un 'rol_id'
+
+Juan
+
+- TipoEspecialidad: Utilizamos el Tipo_Especialidad_Codigo como PK
+- Especialidad: Utilizamos Codigo_especialidad como PK
+- Turno: Se cambia el nombre de Fecha a Fecha_programada ya que daba a confusion
+- Turno: Se quita Id_consulta ya que ConsultaMedica ya que la relacion bidireccional carece de sentido
+- ConsultaMedica: se saca el atributo id_turno, este dato se usa como PK de ConsultaMedica
+- Profesional: Se permite la Matricula sea NULL. 
+Asumimos el Costo_Total de una compra de bonos es el precio de venta de la farmacia
+- Se quita el atributo Usado ya que esto se puede deducir si el bono tiene un consulta_numero asignado
+Nota: Detectamos todos los bonos validos (que tienen una fecha de impresion), ya fueron utilizados (tienen un consulta_numero).
+- Se agrega el atributo Habilitado a UsuarioXRol ya que debemos poder dar la baja de cada rol por separado (de Pepe debemos poder dar de baja que es Profesional pero que siga siendo Afiliado)
+- Quitamos la tabla UsuarioXRol ya que decidimos cada Afiliado/Profesional sabra si esta habilitado o no
+- Los afiliados siempre se dan de alta como Habilitados
